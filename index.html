@@ -146,18 +146,78 @@ section { padding: 3rem 1.25rem; }
 .benefits { background: var(--cream); }
 
 .benefit-card {
+  perspective: 800px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.benefit-card-inner {
+  position: relative;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+.benefit-card.flipped .benefit-card-inner { transform: rotateY(180deg); }
+
+.benefit-front, .benefit-back {
   background: var(--white);
   border-radius: var(--radius);
   padding: 1.5rem;
-  margin-bottom: 1rem;
   box-shadow: var(--shadow);
-  border-left: 4px solid var(--blue);
-  transition: transform 0.2s;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
-.benefit-card:hover { transform: translateY(-2px); }
+
+.benefit-front {
+  text-align: center;
+  border-bottom: 4px solid var(--blue);
+  position: relative;
+}
+
+.benefit-front::after {
+  content: 'Tippen für Details →';
+  display: block;
+  font-size: 0.7rem;
+  color: var(--blue);
+  opacity: 0.6;
+  margin-top: 0.75rem;
+  font-weight: 500;
+}
+
+.benefit-back {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  transform: rotateY(180deg);
+  border-bottom: 4px solid var(--accent);
+  text-align: left;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.benefit-back h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+
+.benefit-back p {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.benefit-back .back-hint {
+  font-size: 0.7rem;
+  color: var(--accent);
+  opacity: 0.7;
+  margin-top: 0.75rem;
+  font-weight: 500;
+}
 
 .benefit-icon {
-  font-size: 1.6rem;
+  font-size: 2rem;
   margin-bottom: 0.5rem;
 }
 
@@ -168,7 +228,7 @@ section { padding: 3rem 1.25rem; }
   margin-bottom: 0.4rem;
 }
 
-.benefit-card p {
+.benefit-card .benefit-front p {
   font-size: 0.9rem;
   color: var(--text-light);
   line-height: 1.55;
@@ -567,35 +627,89 @@ footer .footer-name {
   <h2 class="section-title">Was für dich drin ist.</h2>
   <p class="section-sub">Keine Phrasen. Hier sind die Fakten.</p>
   <div class="benefits-grid">
-    <div class="benefit-card">
-      <div class="benefit-icon">💰</div>
-      <h3>18–23 €/Stunde</h3>
-      <p>Übertariflich, je nach Erfahrung. Plus Weihnachtsgeld, Urlaubsgeld und Leistungsprämien.</p>
+    <div class="benefit-card" onclick="this.classList.toggle('flipped')">
+      <div class="benefit-card-inner">
+        <div class="benefit-front">
+          <div class="benefit-icon">💰</div>
+          <h3>18–23 €/Stunde</h3>
+          <p>Übertariflich, je nach Erfahrung. Plus Weihnachtsgeld, Urlaubsgeld und Leistungsprämien.</p>
+        </div>
+        <div class="benefit-back">
+          <h3>💰 Was heißt das konkret?</h3>
+          <p>Dein Stundenlohn liegt je nach Qualifikation und Erfahrung zwischen 18 und 23 Euro – das ist übertariflich. Dazu kommen Weihnachtsgeld, Urlaubsgeld und Leistungsprämien. Kundendienst-Erfahrung wird extra vergütet.</p>
+          <span class="back-hint">← Zurücktippen</span>
+        </div>
+      </div>
     </div>
-    <div class="benefit-card">
-      <div class="benefit-icon">🏖️</div>
-      <h3>30 Tage Urlaub</h3>
-      <p>Hochflexibel planbar. Dein Privatleben zählt bei uns – nicht nur auf dem Papier.</p>
+    <div class="benefit-card" onclick="this.classList.toggle('flipped')">
+      <div class="benefit-card-inner">
+        <div class="benefit-front">
+          <div class="benefit-icon">🏖️</div>
+          <h3>30 Tage Urlaub</h3>
+          <p>Hochflexibel planbar. Dein Privatleben zählt bei uns – nicht nur auf dem Papier.</p>
+        </div>
+        <div class="benefit-back">
+          <h3>🏖️ Urlaub, der den Namen verdient</h3>
+          <p>30 Tage, hochflexibel planbar. Überstunden werden abgebummelt oder ausbezahlt – du entscheidest. Private Termine während der Arbeitszeit? Kein Problem, wenn's im Rahmen bleibt. Hier zählt der Mensch.</p>
+          <span class="back-hint">← Zurücktippen</span>
+        </div>
+      </div>
     </div>
-    <div class="benefit-card">
-      <div class="benefit-icon">🚐</div>
-      <h3>Firmenwagen inklusive</h3>
-      <p>Eigenes Fahrzeug, auch zur privaten Nutzung. Morgens einsteigen, losfahren – kein Stress.</p>
+    <div class="benefit-card" onclick="this.classList.toggle('flipped')">
+      <div class="benefit-card-inner">
+        <div class="benefit-front">
+          <div class="benefit-icon">🚐</div>
+          <h3>Firmenwagen inklusive</h3>
+          <p>Eigenes Fahrzeug, auch zur privaten Nutzung. Morgens einsteigen, losfahren – kein Stress.</p>
+        </div>
+        <div class="benefit-back">
+          <h3>🚐 Dein eigener Wagen</h3>
+          <p>Jeder Geselle bekommt ein eigenes, voll ausgestattetes Firmenfahrzeug – das du auch privat nutzen darfst. Morgens fährst du direkt vom Firmengelände los, der Wagen wartet schon auf dich.</p>
+          <span class="back-hint">← Zurücktippen</span>
+        </div>
+      </div>
     </div>
-    <div class="benefit-card">
-      <div class="benefit-icon">🤝</div>
-      <h3>Familienbetrieb, kein Konzern</h3>
-      <p>Chefs auf Augenhöhe. Offene Türen, ehrliche Worte, flexible Lösungen für dein Leben.</p>
+    <div class="benefit-card" onclick="this.classList.toggle('flipped')">
+      <div class="benefit-card-inner">
+        <div class="benefit-front">
+          <div class="benefit-icon">🤝</div>
+          <h3>Familienbetrieb, kein Konzern</h3>
+          <p>Chefs auf Augenhöhe. Offene Türen, ehrliche Worte, flexible Lösungen für dein Leben.</p>
+        </div>
+        <div class="benefit-back">
+          <h3>🤝 Echtes Miteinander</h3>
+          <p>Die Chefin ist die gute Seele der Firma. Der Chef nimmt Anteil am privaten Leben der Mitarbeiter und reagiert flexibel. Kein Prinzipienreiter – sondern ein Mensch, der versteht, dass das Leben manchmal dazwischenfunkt.</p>
+          <span class="back-hint">← Zurücktippen</span>
+        </div>
+      </div>
     </div>
-    <div class="benefit-card">
-      <div class="benefit-icon">🔧</div>
-      <h3>Eigenverantwortlich arbeiten</h3>
-      <p>Kein Mikromanagement, kein GPS-Tracking, kein iPad-Überwachung. Wir vertrauen dir.</p>
+    <div class="benefit-card" onclick="this.classList.toggle('flipped')">
+      <div class="benefit-card-inner">
+        <div class="benefit-front">
+          <div class="benefit-icon">🔧</div>
+          <h3>Eigenverantwortlich arbeiten</h3>
+          <p>Kein Mikromanagement, kein GPS-Tracking, keine iPad-Überwachung. Wir vertrauen dir.</p>
+        </div>
+        <div class="benefit-back">
+          <h3>🔧 Freiheit statt Kontrolle</h3>
+          <p>Keine GPS-Ortung, keine digitale Überwachung, keine Bauteilkontrolle. Du organisierst deine Einsätze eigenverantwortlich. Sehr wenig Papierkram – morgens warten die Aufträge, du packst den Wagen und los geht's.</p>
+          <span class="back-hint">← Zurücktippen</span>
+        </div>
+      </div>
     </div>
-    <div class="benefit-card">
-      <div class="benefit-icon">📍</div>
-      <h3>Nur regional unterwegs</h3>
-      <p>Max. 45 Min. Anfahrt. Jeden Abend zuhause – keine Montage, kein Hotelkoffer.</p>
+    <div class="benefit-card" onclick="this.classList.toggle('flipped')">
+      <div class="benefit-card-inner">
+        <div class="benefit-front">
+          <div class="benefit-icon">📍</div>
+          <h3>Nur regional unterwegs</h3>
+          <p>Max. 45 Min. Anfahrt. Jeden Abend zuhause – keine Montage, kein Hotelkoffer.</p>
+        </div>
+        <div class="benefit-back">
+          <h3>📍 Heimat statt Autobahn</h3>
+          <p>Dein Einsatzgebiet ist die Region rund um Plön – maximal 45 Minuten Anfahrt (bis Kiel). Du bist im Schnitt 60–90 Minuten am Tag im Auto. Jeden Abend zuhause bei deiner Familie.</p>
+          <span class="back-hint">← Zurücktippen</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -603,7 +717,7 @@ footer .footer-name {
 <!-- ═══ QUOTE ═══ -->
 <section class="quote-section">
   <blockquote>„Die Chefs sind sehr nahbar. Man wird als ganzer Mensch gesehen, nicht als Werkzeug auf zwei Beinen."</blockquote>
-  <cite>— Mitarbeiter der Blauen Flotte</cite>
+  <cite>— Benita M. · Kollegin der Blauen Flotte</cite>
 </section>
 
 <!-- ═══ QUIZ ═══ -->
@@ -690,7 +804,7 @@ footer .footer-name {
       <div class="card-emoji">✉️</div>
       <h3>Per E-Mail</h3>
       <p>Schreib uns eine kurze Mail – formlos, ohne Bewerbungsmappe.</p>
-      <a href="mailto:info@heizung-bad-ploen.de?subject=Interesse%20als%20SHK-Geselle&body=Moin!%20Ich%20interessiere%20mich%20f%C3%BCr%20die%20Stelle%20als%20SHK-Geselle%20bei%20der%20Blauen%20Flotte." class="contact-btn btn-email">✉️ E-Mail senden</a>
+      <a href="/cdn-cgi/l/email-protection#11787f777e517974786b647f763c7370753c617d7e747f3f75742e6264737b7472652c587f65746374626274342321707d6234232142595a3c567462747d7d7437737e75682c5c7e787f30342321587279342321787f657463746262787463743423217c78727934232177345222345352633423217578743423214265747d7d74342321707d6234232142595a3c567462747d7d74342321737478342321757463342321537d7064747f342321577d7e6565743f" class="contact-btn btn-email">✉️ E-Mail senden</a>
     </div>
   </div>
 </section>
@@ -777,7 +891,7 @@ footer .footer-name {
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ─── QUIZ LOGIC ───
 const answers = {};
 function quizAnswer(q, val) {
@@ -835,20 +949,4 @@ function sharePage() {
       text: 'Schau mal, die Blaue Flotte in Plön sucht SHK-Gesellen. Übertarifliche Bezahlung, 30 Tage Urlaub, Firmenwagen.',
       url: window.location.href
     });
-  } else {
-    copyLink();
-  }
-}
-
-function copyLink() {
-  navigator.clipboard.writeText(window.location.href).then(() => {
-    const btn = event.target;
-    const orig = btn.textContent;
-    btn.textContent = '✅ Kopiert!';
-    setTimeout(() => btn.textContent = orig, 2000);
-  });
-}
-</script>
-
-</body>
-</html>
+  
