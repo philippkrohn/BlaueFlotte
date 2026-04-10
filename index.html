@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dein neuer Job bei Willy Fick | Die Blaue Flotte von Plön</title>
+<meta name="description" content="SHK-Geselle gesucht in Plön. Übertariflich, 30 Tage Urlaub, Firmenwagen, familiäres Team. Jetzt in 60 Sekunden bewerben.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #001a3a;
+  --navy-light: #002d5c;
+  --blue: #1a6fb5;
+  --blue-bright: #2d8fd5;
+  --white: #ffffff;
+  --cream: #f5f2ed;
+  --cream-dark: #e8e3db;
+  --accent: #e8a838;
+  --accent-hover: #d4952e;
+  --green: #2e8b57;
+  --text: #2c2c2c;
+  --text-light: #5a5a5a;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --shadow: 0 4px 24px rgba(0,26,58,0.12);
+  --shadow-lg: 0 12px 48px rgba(0,26,58,0.18);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ─── HERO ─── */
+.hero {
+  background: linear-gradient(165deg, var(--navy) 0%, var(--navy-light) 60%, var(--blue) 100%);
+  color: var(--white);
+  padding: 2rem 1.25rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0; right: 0;
+  height: 40px;
+  background: var(--cream);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.hero-logo {
+  width: 180px;
+  margin: 0 auto 0.5rem;
+  filter: brightness(0) invert(1);
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 0.35rem 1rem;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(4px);
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.hero h1 span {
+  color: var(--accent);
+}
+
+.hero p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  max-width: 500px;
+  margin: 0 auto 1.75rem;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--accent);
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 1rem 2rem;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 0 4px 20px rgba(232,168,56,0.4);
+}
+.hero-cta:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+.hero-mascot {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255,255,255,0.3);
+  margin-bottom: 1rem;
+}
+
+/* ─── SECTION BASE ─── */
+section { padding: 3rem 1.25rem; }
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+
+.section-sub {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* ─── BENEFITS GRID ─── */
+.benefits { background: var(--cream); }
+
+.benefit-card {
+  perspective: 800px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.benefit-card-inner {
+  position: relative;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+.benefit-card.flipped .benefit-card-inner { transform: rotateY(180deg); }
+
+.benefit-front, .benefit-back {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.benefit-front {
+  text-align: center;
+  border-bottom: 4px solid var(--blue);
+  position: relative;
+}
+
+.benefit-front::after {
+  content: 'Tippen für Details →';
+  display: block;
+  font-size: 0.7rem;
+  color: var(--blue);
+  opacity: 0.6;
+  margin-top: 0.75rem;
+  font-weight: 500;
+}
+
+.benefit-back {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  transform: rotateY(180deg);
+  border-bottom: 4px solid var(--accent);
+  text-align: left;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.benefit-back h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+
+.benefit-back p {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.benefit-back .back-hint {
+  font-size: 0.7rem;
+  color: var(--accent);
+  opacity: 0.7;
+  margin-top: 0.75rem;
+  font-weight: 500;
+}
+
+.benefit-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.benefit-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+}
+
+.benefit-card .benefit-front p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.55;
+}
+
+/* ─── QUOTE ─── */
+.quote-section {
+  background: linear-gradient(165deg, var(--navy) 0%, var(--navy-light) 100%);
+  color: var(--white);
+  text-align: center;
+  padding: 3rem 1.5rem;
+  position: relative;
+}
+
+.quote-section blockquote {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.4;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.quote-section cite {
+  font-style: normal;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* ─── QUALIFICATION QUIZ ─── */
+.quiz {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.5rem;
+  margin: 0 1.25rem;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  top: -1.5rem;
+}
+
+.quiz-progress {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.quiz-dot {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--cream-dark);
+  transition: background 0.3s;
+}
+.quiz-dot.active { background: var(--blue); }
+
+.quiz-question {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+.quiz-question.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.quiz h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+}
+
+.quiz .q-label {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.quiz-btn {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 0.6rem;
+  border: 2px solid var(--cream-dark);
+  border-radius: var(--radius);
+  background: var(--white);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+.quiz-btn:hover { border-color: var(--blue); background: rgba(26,111,181,0.04); }
+.quiz-btn.selected { border-color: var(--blue); background: rgba(26,111,181,0.08); color: var(--navy); font-weight: 600; }
+
+.quiz-result {
+  display: none;
+  text-align: center;
+  padding: 1rem 0;
+  animation: fadeIn 0.4s ease;
+}
+
+.quiz-result.pass .result-icon { font-size: 3rem; margin-bottom: 0.75rem; }
+.quiz-result.fail .result-icon { font-size: 3rem; margin-bottom: 0.75rem; }
+
+.quiz-result h3 {
+  margin-bottom: 0.5rem;
+}
+
+.quiz-result p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+/* ─── CONTACT OPTIONS ─── */
+.contact-section {
+  padding: 2rem 1.25rem 3rem;
+}
+
+.contact-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.contact-card .card-emoji {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.contact-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.3rem;
+}
+
+.contact-card p {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 100px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.btn-whatsapp {
+  background: #25D366;
+  color: white;
+}
+.btn-whatsapp:hover { background: #1fb855; }
+
+.btn-form {
+  background: var(--blue);
+  color: white;
+}
+.btn-form:hover { background: var(--blue-bright); }
+
+.btn-call {
+  background: var(--navy);
+  color: white;
+}
+.btn-call:hover { background: var(--navy-light); }
+
+.btn-email {
+  background: var(--accent);
+  color: var(--navy);
+}
+.btn-email:hover { background: var(--accent-hover); }
+
+/* ─── SHARE BAR ─── */
+.share-bar {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1.5rem 1.25rem;
+  background: var(--cream-dark);
+}
+
+.share-bar p {
+  width: 100%;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 0.25rem;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.55rem 1rem;
+  border-radius: 100px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1.5px solid var(--cream-dark);
+  background: var(--white);
+  color: var(--text);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.share-btn:hover { border-color: var(--blue); color: var(--blue); }
+
+/* ─── MODAL ─── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,26,58,0.6);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  align-items: flex-end;
+  justify-content: center;
+}
+.modal-overlay.active { display: flex; }
+
+.modal {
+  background: var(--white);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: 2rem 1.5rem 2.5rem;
+  width: 100%;
+  max-width: 500px;
+  max-height: 85vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--cream);
+  font-size: 1.2rem;
+  cursor: pointer;
+  float: right;
+  color: var(--text-light);
+}
+
+.modal h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 1.25rem;
+  clear: both;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 2px solid var(--cream-dark);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--white);
+  transition: border-color 0.2s;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--blue);
+}
+
+.form-group textarea { resize: vertical; min-height: 80px; }
+
+.form-submit {
+  width: 100%;
+  padding: 1rem;
+  background: var(--blue);
+  color: white;
+  border: none;
+  border-radius: 100px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+.form-submit:hover { background: var(--blue-bright); }
+
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.form-success .result-icon { font-size: 3rem; margin-bottom: 0.75rem; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  padding: 2rem 1.25rem;
+  font-size: 0.8rem;
+  line-height: 1.8;
+}
+
+footer a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+}
+
+footer .footer-name {
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ─── DESKTOP ─── */
+@media (min-width: 640px) {
+  .hero { padding: 3rem 2rem 4rem; }
+  .hero h1 { font-size: 2.6rem; }
+  .hero-logo { width: 220px; }
+  section { padding: 3.5rem 2rem; max-width: 600px; margin: 0 auto; }
+  .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .benefit-card { margin-bottom: 0; }
+  .quiz { margin: 0 auto; max-width: 550px; }
+  .contact-section { max-width: 600px; margin: 0 auto; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .contact-card { margin-bottom: 0; }
+}
+
+/* ─── PRIVACY NOTICE INLINE ─── */
+.privacy-note {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  margin-top: 0.75rem;
+  line-height: 1.4;
+}
+.privacy-note a { color: var(--blue); }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero">
+  <img src="Willy_Fick_Logo_12KB-1.png" alt="Willy Fick Logo" class="hero-logo">
+  <div class="hero-badge">📍 Plön &middot; Die Blaue Flotte sucht Verstärkung</div>
+  <h1>Dein nächster Job.<br><span>Weniger Stress, mehr Wert.</span></h1>
+  <p>Wir suchen zwei SHK-Gesellen, die echte Wertschätzung, übertarifliche Bezahlung und ein Team auf Augenhöhe verdient haben.</p>
+  <a href="#quiz-section" class="hero-cta">👉 Jetzt in 60 Sekunden bewerben</a>
+</header>
+
+<!-- ═══ BENEFITS ═══ -->
+<section class="benefits">
+  <h2 class="section-title">Was für dich drin ist.</h2>
+  <p class="section-sub">Keine Phrasen. Hier sind die Fakten.</p>
+  <div class="benefits-grid">
+    <div class="benefit-card" onclick="this.classList.toggle('flipped')">
+      <div class="benefit-card-inner">
+        <div class="benefit-front">
+          <div class="benefit-icon">💰</div>
+          <h3>18–23 €/Stunde</h3>
+          <p>Übertariflich, je nach Erfahrung. Plus Weihnachtsgeld, Urlaubsgeld und Leistungsprämien.</p>
+        </div>
+        <div class="benefit-back">
+          <h3>💰 Was heißt das konkret?</h3>
+          <p>Dein Stundenlohn liegt je nach Qualifikation und Erfahrung zwischen 18 und 23 Euro – das ist übertariflich. Dazu kommen Weihnachtsgeld, Urlaubsgeld und Leistungsprämien. Kundendienst-Erfahrung wird extra vergütet.</p>
+          <span class="back-hint">← Zurücktippen</span>
+        </div>
+      </div>
+    </div>
+    <div class="benefit-card" onclick="this.classList.toggle('flipped')">
+      <div class="benefit-card-inner">
+        <div class="benefit-front">
+          <div class="benefit-icon">🏖️</div>
+          <h3>30 Tage Urlaub</h3>
+          <p>Hochflexibel planbar. Dein Privatleben zählt bei uns – nicht nur auf dem Papier.</p>
+        </div>
+        <div class="benefit-back">
+          <h3>🏖️ Urlaub, der den Namen verdient</h3>
+          <p>30 Tage, hochflexibel planbar. Überstunden werden abgebummelt oder ausbezahlt – du entscheidest. Private Termine während der Arbeitszeit? Kein Problem, wenn's im Rahmen bleibt. Hier zählt der Mensch.</p>
+          <span class="back-hint">← Zurücktippen</span>
+        </div>
+      </div>
+    </div>
+    <div class="benefit-card" onclick="this.classList.toggle('flipped')">
+      <div class="benefit-card-inner">
+        <div class="benefit-front">
+          <div class="benefit-icon">🚐</div>
+          <h3>Firmenwagen inklusive</h3>
+          <p>Eigenes Fahrzeug, auch zur privaten Nutzung. Morgens einsteigen, losfahren – kein Stress.</p>
+        </div>
+        <div class="benefit-back">
+          <h3>🚐 Dein eigener Wagen</h3>
+          <p>Jeder Geselle bekommt ein eigenes, voll ausgestattetes Firmenfahrzeug – das du auch privat nutzen darfst. Morgens fährst du direkt vom Firmengelände los, der Wagen wartet schon auf dich.</p>
+          <span class="back-hint">← Zurücktippen</span>
+        </div>
+      </div>
+    </div>
+    <div class="benefit-card" onclick="this.classList.toggle('flipped')">
+      <div class="benefit-card-inner">
+        <div class="benefit-front">
+          <div class="benefit-icon">🤝</div>
+          <h3>Familienbetrieb, kein Konzern</h3>
+          <p>Chefs auf Augenhöhe. Offene Türen, ehrliche Worte, flexible Lösungen für dein Leben.</p>
+        </div>
+        <div class="benefit-back">
+          <h3>🤝 Echtes Miteinander</h3>
+          <p>Die Chefin ist die gute Seele der Firma. Der Chef nimmt Anteil am privaten Leben der Mitarbeiter und reagiert flexibel. Kein Prinzipienreiter – sondern ein Mensch, der versteht, dass das Leben manchmal dazwischenfunkt.</p>
+          <span class="back-hint">← Zurücktippen</span>
+        </div>
+      </div>
+    </div>
+    <div class="benefit-card" onclick="this.classList.toggle('flipped')">
+      <div class="benefit-card-inner">
+        <div class="benefit-front">
+          <div class="benefit-icon">🔧</div>
+          <h3>Eigenverantwortlich arbeiten</h3>
+          <p>Kein Mikromanagement, kein GPS-Tracking, keine iPad-Überwachung. Wir vertrauen dir.</p>
+        </div>
+        <div class="benefit-back">
+          <h3>🔧 Freiheit statt Kontrolle</h3>
+          <p>Keine GPS-Ortung, keine digitale Überwachung, keine Bauteilkontrolle. Du organisierst deine Einsätze eigenverantwortlich. Sehr wenig Papierkram – morgens warten die Aufträge, du packst den Wagen und los geht's.</p>
+          <span class="back-hint">← Zurücktippen</span>
+        </div>
+      </div>
+    </div>
+    <div class="benefit-card" onclick="this.classList.toggle('flipped')">
+      <div class="benefit-card-inner">
+        <div class="benefit-front">
+          <div class="benefit-icon">📍</div>
+          <h3>Nur regional unterwegs</h3>
+          <p>Max. 45 Min. Anfahrt. Jeden Abend zuhause – keine Montage, kein Hotelkoffer.</p>
+        </div>
+        <div class="benefit-back">
+          <h3>📍 Heimat statt Autobahn</h3>
+          <p>Dein Einsatzgebiet ist die Region rund um Plön – maximal 45 Minuten Anfahrt (bis Kiel). Du bist im Schnitt 60–90 Minuten am Tag im Auto. Jeden Abend zuhause bei deiner Familie.</p>
+          <span class="back-hint">← Zurücktippen</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ QUOTE ═══ -->
+<section class="quote-section">
+  <blockquote>„Die Chefs sind sehr nahbar. Man wird als ganzer Mensch gesehen, nicht als Werkzeug auf zwei Beinen."</blockquote>
+  <cite>— Benita M. · Kollegin der Blauen Flotte</cite>
+</section>
+
+<!-- ═══ QUIZ ═══ -->
+<div class="quiz" id="quiz-section">
+  <h2 class="section-title" style="font-size:1.3rem;">Passt du zu uns?</h2>
+  <p class="section-sub" style="margin-bottom:1.25rem;">3 kurze Fragen – kein Lebenslauf, kein Papierkram.</p>
+
+  <div class="quiz-progress">
+    <div class="quiz-dot active" id="dot1"></div>
+    <div class="quiz-dot" id="dot2"></div>
+    <div class="quiz-dot" id="dot3"></div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="quiz-question active" id="q1">
+    <p class="q-label">Frage 1 von 3</p>
+    <h3>Hast du einen Gesellenbrief im SHK-Bereich?</h3>
+    <p style="font-size:0.8rem;color:var(--text-light);margin-bottom:1rem;">Anlagenmechaniker, Gas-Wasser-Installateur, Heizungsbauer – alles zählt.</p>
+    <button class="quiz-btn" onclick="quizAnswer(1,'ja')">✅ Ja, hab ich!</button>
+    <button class="quiz-btn" onclick="quizAnswer(1,'meister')">🎓 Ich bin sogar Meister</button>
+    <button class="quiz-btn" onclick="quizAnswer(1,'nein')">❌ Nein, leider nicht</button>
+  </div>
+
+  <!-- Q2 -->
+  <div class="quiz-question" id="q2">
+    <p class="q-label">Frage 2 von 3</p>
+    <h3>Hast du einen Führerschein Klasse B?</h3>
+    <button class="quiz-btn" onclick="quizAnswer(2,'ja')">🚗 Ja, klar</button>
+    <button class="quiz-btn" onclick="quizAnswer(2,'nein')">Nein, habe ich nicht</button>
+  </div>
+
+  <!-- Q3 -->
+  <div class="quiz-question" id="q3">
+    <p class="q-label">Frage 3 von 3</p>
+    <h3>Ab wann könntest du starten?</h3>
+    <button class="quiz-btn" onclick="quizAnswer(3,'sofort')">🟢 So bald wie möglich</button>
+    <button class="quiz-btn" onclick="quizAnswer(3,'bald')">🟡 In 1–3 Monaten</button>
+    <button class="quiz-btn" onclick="quizAnswer(3,'spaeter')">🔵 Später / Bin erstmal nur neugierig</button>
+  </div>
+
+  <!-- RESULT: PASS -->
+  <div class="quiz-result pass" id="result-pass">
+    <div class="result-icon">🎉</div>
+    <h3>Das klingt nach einem Match!</h3>
+    <p>Wähle unten den Weg, der am besten zu dir passt. Kein Anschreiben nötig – einfach melden.</p>
+  </div>
+
+  <!-- RESULT: FAIL -->
+  <div class="quiz-result fail" id="result-fail">
+    <div class="result-icon">😔</div>
+    <h3>Diesmal passt es leider nicht.</h3>
+    <p>Für diese Stelle brauchen wir einen Gesellenbrief und Führerschein. Wir wünschen dir alles Gute!</p>
+  </div>
+</div>
+
+<!-- ═══ CONTACT OPTIONS ═══ -->
+<section class="contact-section" id="contact">
+  <h2 class="section-title">Meld dich. So wie du willst.</h2>
+  <p class="section-sub">Kein Anschreiben. Kein Lebenslauf. Einfach Kontakt aufnehmen.</p>
+
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="card-emoji">💬</div>
+      <h3>Per WhatsApp</h3>
+      <p>Der schnellste Weg. Schreib uns einfach – wir antworten persönlich.</p>
+      <a href="https://wa.me/4915752065959?text=Hallo%20Blaue%20Flotte,%20ich%20interessiere%20mich%20f%C3%BCr%20die%20Stelle%20als%20Mitarbeiter:in%20bei%20Euch." class="contact-btn btn-whatsapp">💬 WhatsApp starten</a>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-emoji">📋</div>
+      <h3>Kurzbewerbung</h3>
+      <p>30 Sekunden, 4 Felder. Wir rufen dich dann an.</p>
+      <button class="contact-btn btn-form" onclick="openModal('form-modal')">📋 Formular öffnen</button>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-emoji">📞</div>
+      <h3>Rückruf anfordern</h3>
+      <p>Hinterlasse deine Nummer – Jochen oder Gaby melden sich.</p>
+      <button class="contact-btn btn-call" onclick="openModal('callback-modal')">📞 Rückruf anfordern</button>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-emoji">✉️</div>
+      <h3>Per E-Mail</h3>
+      <p>Schreib uns eine kurze Mail – formlos, ohne Bewerbungsmappe.</p>
+      <a href="mailto:info@heizung-bad-ploen.de?subject=Interesse%20als%20SHK-Geselle&amp;body=Moin!%20Ich%20interessiere%20mich%20f%C3%BCr%20die%20Stelle%20als%20SHK-Geselle%20bei%20der%20Blauen%20Flotte." class="contact-btn btn-email">✉️ E-Mail senden</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SHARE BAR ═══ -->
+<div class="share-bar">
+  <p>Kennst du jemanden, der das lesen sollte?</p>
+  <a class="share-btn" href="https://wa.me/?text=Schau%20mal%2C%20die%20Blaue%20Flotte%20in%20Pl%C3%B6n%20sucht%20SHK-Gesellen%3A%20https%3A%2F%2Fphilippkrohn.github.io%2FBlaueFlotte%2F" target="_blank">💬 WhatsApp</a>
+  <button class="share-btn" onclick="sharePage()">📤 Teilen</button>
+  <button class="share-btn" onclick="copyLink()">🔗 Link kopieren</button>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <p class="footer-name">Willy Fick Inh. Jochen Wichmann</p>
+  <p>Die Blaue Flotte von Plön<br>
+  📍 Plön &middot; 📞 <a href="tel:+4945222897">04522 2897</a></p>
+  <p style="margin-top:0.75rem;">
+    <a href="https://www.heizung-bad-ploen.de" target="_blank">Website</a> · 
+    <a href="https://www.heizung-bad-ploen.de/impressum" target="_blank">Impressum</a> · 
+    <a href="https://www.heizung-bad-ploen.de/datenschutz" target="_blank">Datenschutz</a>
+  </p>
+  <p style="margin-top:0.5rem;font-size:0.7rem;">Recruiting by <a href="https://personalakademie.de" target="_blank">personalakademie.de</a></p>
+</footer>
+
+<!-- ═══ MODAL: FORMULAR ═══ -->
+<div class="modal-overlay" id="form-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('form-modal')">✕</button>
+    <h3>Kurzbewerbung</h3>
+    <form id="apply-form" action="https://formspree.io/f/xdaprdod" method="POST">
+      <input type="hidden" name="_subject" value="Neue Kurzbewerbung – Blaue Flotte Landingpage">
+      <input type="hidden" name="_next" value="https://philippkrohn.github.io/BlaueFlotte/danke.html">
+      <div class="form-group">
+        <label>Dein Name</label>
+        <input type="text" name="name" required placeholder="Max Mustermann">
+      </div>
+      <div class="form-group">
+        <label>Telefonnummer</label>
+        <input type="tel" name="phone" required placeholder="0151 12345678">
+      </div>
+      <div class="form-group">
+        <label>E-Mail (optional)</label>
+        <input type="email" name="email" placeholder="max@beispiel.de">
+      </div>
+      <div class="form-group">
+        <label>Kurze Nachricht (optional)</label>
+        <textarea name="message" placeholder="Z.B. wann du starten könntest oder was dich interessiert..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Absenden</button>
+      <p class="privacy-note">Mit dem Absenden stimmst du zu, dass wir dich bezüglich deiner Anfrage kontaktieren. <a href="https://www.heizung-bad-ploen.de/datenschutz" target="_blank">Datenschutz</a></p>
+    </form>
+  </div>
+</div>
+
+<!-- ═══ MODAL: RÜCKRUF ═══ -->
+<div class="modal-overlay" id="callback-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('callback-modal')">✕</button>
+    <h3>Rückruf anfordern</h3>
+    <form id="callback-form" action="https://formspree.io/f/xaqlgbyd" method="POST">
+      <input type="hidden" name="_subject" value="Rückruf-Anfrage – Blaue Flotte Landingpage">
+      <input type="hidden" name="_next" value="https://philippkrohn.github.io/BlaueFlotte/danke.html">
+      <div class="form-group">
+        <label>Dein Name</label>
+        <input type="text" name="name" required placeholder="Max Mustermann">
+      </div>
+      <div class="form-group">
+        <label>Telefonnummer</label>
+        <input type="tel" name="phone" required placeholder="0151 12345678">
+      </div>
+      <div class="form-group">
+        <label>Wann am besten erreichbar?</label>
+        <select name="time">
+          <option>Morgens (8–12 Uhr)</option>
+          <option>Mittags (12–14 Uhr)</option>
+          <option>Nachmittags (14–17 Uhr)</option>
+          <option>Abends (ab 17 Uhr)</option>
+        </select>
+      </div>
+      <button type="submit" class="form-submit">Rückruf anfordern</button>
+      <p class="privacy-note">Wir rufen dich einmalig an. <a href="https://www.heizung-bad-ploen.de/datenschutz" target="_blank">Datenschutz</a></p>
+    </form>
+  </div>
+</div>
+
+<script>
+// ─── QUIZ LOGIC ───
+const answers = {};
+function quizAnswer(q, val) {
+  answers[q] = val;
+  
+  // Hide current question
+  document.getElementById('q' + q).classList.remove('active');
+  
+  // Check for fail conditions
+  if ((q === 1 && val === 'nein') || (q === 2 && val === 'nein')) {
+    document.getElementById('result-fail').style.display = 'block';
+    updateDots(3);
+    return;
+  }
+  
+  // Advance
+  if (q < 3) {
+    document.getElementById('q' + (q + 1)).classList.add('active');
+    updateDots(q + 1);
+  } else {
+    document.getElementById('result-pass').style.display = 'block';
+    updateDots(3);
+  }
+}
+
+function updateDots(step) {
+  for (let i = 1; i <= 3; i++) {
+    document.getElementById('dot' + i).classList.toggle('active', i <= step);
+  }
+}
+
+// ─── MODALS ───
+function openModal(id) {
+  document.getElementById(id).classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Close on overlay click
+document.querySelectorAll('.modal-overlay').forEach(el => {
+  el.addEventListener('click', e => {
+    if (e.target === el) closeModal(el.id);
+  });
+});
+
+// ─── SHARE ───
+function sharePage() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'SHK-Geselle gesucht – Die Blaue Flotte von Plön',
+      text: 'Schau mal, die Blaue Flotte in Plön sucht SHK-Gesellen. Übertarifliche Bezahlung, 30 Tage Urlaub, Firmenwagen.',
+      url: window.location.href
+    });
+  
