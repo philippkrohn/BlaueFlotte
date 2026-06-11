@@ -53,5 +53,44 @@ a:hover { background: #d4952e; }
   <p>Wir haben deine Anfrage erhalten und melden uns in der Regel innerhalb von 1–2 Werktagen bei dir. Wir freuen uns!</p>
   <a href="index.html">← Zurück zur Seite</a>
 </div>
+
+<!-- Tracking-IDs werden später nach Einwilligungs- und Datenschutzprüfung ergänzt.
+     Die Danke-Seite meldet einen Lead an Meta Pixel, Google Tag oder GTM,
+     sobald eines dieser Systeme eingebunden ist. Direkte Seitenaufrufe zählen nicht als Lead. -->
+<script>
+(function () {
+  function safeSessionGet(key) {
+    try { return sessionStorage.getItem(key) || ''; } catch (error) { return ''; }
+  }
+
+  function safeSessionRemove(key) {
+    try { sessionStorage.removeItem(key); } catch (error) { /* Storage optional */ }
+  }
+
+  const submissionPending = safeSessionGet('bf_lead_submission_pending') === '1';
+  if (!submissionPending) return;
+
+  const formType = safeSessionGet('bf_lead_form_type') || 'unbekannt';
+  const eventParameters = {
+    form_type: formType,
+    lead_source: safeSessionGet('bf_utm_source') || 'direkt',
+    campaign: safeSessionGet('bf_utm_campaign') || ''
+  };
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: 'generate_lead', ...eventParameters });
+
+  if (typeof window.fbq === 'function') {
+    window.fbq('track', 'Lead', eventParameters);
+  }
+
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'generate_lead', eventParameters);
+  }
+
+  safeSessionRemove('bf_lead_submission_pending');
+  safeSessionRemove('bf_lead_form_type');
+}());
+</script>
 </body>
 </html>
