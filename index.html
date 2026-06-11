@@ -783,7 +783,7 @@ footer .footer-name {
       <div class="card-emoji">💬</div>
       <h3>Per WhatsApp</h3>
       <p>Der schnellste Weg. Schreib uns einfach – wir antworten persönlich.</p>
-      <a href="https://wa.me/4915752065959?text=Hallo%20Blaue%20Flotte,%20ich%20interessiere%20mich%20f%C3%BCr%20die%20Stelle%20als%20Mitarbeiter:in%20bei%20Euch." class="contact-btn btn-whatsapp">💬 WhatsApp starten</a>
+      <a href="https://wa.me/4915752065959?text=Hallo%20Blaue%20Flotte%2C%20ich%20interessiere%20mich%20f%C3%BCr%20die%20Stelle%20als%20SHK-Geselle%20bei%20Euch.%20Ich%20habe%20einen%20Gesellenbrief%20und%20w%C3%BCrde%20gerne%20unverbindlich%20mehr%20erfahren." class="contact-btn btn-whatsapp">💬 WhatsApp starten</a>
     </div>
 
     <div class="contact-card">
@@ -804,7 +804,7 @@ footer .footer-name {
       <div class="card-emoji">✉️</div>
       <h3>Per E-Mail</h3>
       <p>Schreib uns eine kurze Mail – formlos, ohne Bewerbungsmappe.</p>
-      <a href="/cdn-cgi/l/email-protection#b8d1d6ded7f8d0ddd1c2cdd6df95dad9dc95c8d4d7ddd696dcdd87cbcddad2dddbcc85f1d6ccddcaddcbcbdd9d8a88d9d4cb9d8a88ebf0f395ffddcbddd4d4dd9ed9d5c883dad7dcc185f5d7d1d6999d8a88f1dbd09d8a88d1d6ccddcaddcbcbd1ddcadd9d8a88d5d1dbd09d8a88de9dfb8b9dfafbca9d8a88dcd1dd9d8a88ebccddd4d4dd9d8a88d9d4cb9d8a88ebf0f395ffddcbddd4d4dd9d8a88daddd19d8a88dcddca9d8a88fad4d9cdddd69d8a88fed4d7ccccdd96" class="contact-btn btn-email">✉️ E-Mail senden</a>
+      <a href="mailto:info@heizung-bad-ploen.de?subject=Interesse%20an%20der%20SHK-Stelle&body=Hallo%20Blaue%20Flotte%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20die%20Stelle%20als%20SHK-Geselle%20bei%20Euch.%20Bitte%20meldet%20Euch%20bei%20mir.%0A%0AViele%20Gr%C3%BC%C3%9Fe" class="contact-btn btn-email">✉️ E-Mail senden</a>
     </div>
   </div>
 </section>
@@ -838,6 +838,17 @@ footer .footer-name {
     <form id="apply-form" action="https://formspree.io/f/xdaprdod" method="POST">
       <input type="hidden" name="_subject" value="Neue Kurzbewerbung – Blaue Flotte Landingpage">
       <input type="hidden" name="_next" value="https://philippkrohn.github.io/BlaueFlotte/danke.html">
+      <input type="hidden" name="form_type" value="">
+      <input type="hidden" name="utm_source" value="">
+      <input type="hidden" name="utm_medium" value="">
+      <input type="hidden" name="utm_campaign" value="">
+      <input type="hidden" name="utm_content" value="">
+      <input type="hidden" name="utm_term" value="">
+      <input type="hidden" name="landing_page" value="">
+      <input type="hidden" name="referrer" value="">
+      <input type="hidden" name="quiz_qualification" value="">
+      <input type="hidden" name="quiz_driving_licence" value="">
+      <input type="hidden" name="quiz_start" value="">
       <div class="form-group">
         <label>Dein Name</label>
         <input type="text" name="name" required placeholder="Max Mustermann">
@@ -868,6 +879,17 @@ footer .footer-name {
     <form id="callback-form" action="https://formspree.io/f/xaqlgbyd" method="POST">
       <input type="hidden" name="_subject" value="Rückruf-Anfrage – Blaue Flotte Landingpage">
       <input type="hidden" name="_next" value="https://philippkrohn.github.io/BlaueFlotte/danke.html">
+      <input type="hidden" name="form_type" value="">
+      <input type="hidden" name="utm_source" value="">
+      <input type="hidden" name="utm_medium" value="">
+      <input type="hidden" name="utm_campaign" value="">
+      <input type="hidden" name="utm_content" value="">
+      <input type="hidden" name="utm_term" value="">
+      <input type="hidden" name="landing_page" value="">
+      <input type="hidden" name="referrer" value="">
+      <input type="hidden" name="quiz_qualification" value="">
+      <input type="hidden" name="quiz_driving_licence" value="">
+      <input type="hidden" name="quiz_start" value="">
       <div class="form-group">
         <label>Dein Name</label>
         <input type="text" name="name" required placeholder="Max Mustermann">
@@ -891,11 +913,95 @@ footer .footer-name {
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
+// ─── KAMPAGNENHERKUNFT & TRACKING-HOOKS ───
+// Es werden noch keine externen Tracking-Skripte geladen.
+// Sobald Meta Pixel, Google Tag oder GTM datenschutzkonform eingebunden sind,
+// greifen die vorbereiteten Events automatisch.
+
+const campaignFields = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+
+function safeSessionGet(key) {
+  try { return sessionStorage.getItem(key) || ''; } catch (error) { return ''; }
+}
+
+function safeSessionSet(key, value) {
+  try { sessionStorage.setItem(key, value); } catch (error) { /* Storage optional */ }
+}
+
+function trackEvent(eventName, parameters = {}) {
+  const payload = { event: eventName, ...parameters };
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(payload);
+
+  if (typeof window.fbq === 'function') {
+    window.fbq('trackCustom', eventName, parameters);
+  }
+
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', eventName, parameters);
+  }
+}
+
+function captureCampaignData() {
+  const params = new URLSearchParams(window.location.search);
+
+  campaignFields.forEach(field => {
+    const currentValue = params.get(field);
+    if (currentValue) safeSessionSet('bf_' + field, currentValue);
+  });
+
+  if (!safeSessionGet('bf_landing_page')) {
+    safeSessionSet('bf_landing_page', window.location.href);
+  }
+
+  if (!safeSessionGet('bf_referrer') && document.referrer) {
+    safeSessionSet('bf_referrer', document.referrer);
+  }
+}
+
+function populateTrackingFields(form, formType) {
+  if (!form) return;
+
+  const values = {
+    form_type: formType,
+    landing_page: safeSessionGet('bf_landing_page') || window.location.href,
+    referrer: safeSessionGet('bf_referrer') || document.referrer || '',
+    quiz_qualification: answers[1] || '',
+    quiz_driving_licence: answers[2] || '',
+    quiz_start: answers[3] || ''
+  };
+
+  campaignFields.forEach(field => {
+    values[field] = safeSessionGet('bf_' + field);
+  });
+
+  Object.entries(values).forEach(([name, value]) => {
+    const input = form.querySelector('[name="' + name + '"]');
+    if (input) input.value = value;
+  });
+}
+
+function prepareLeadSubmission(form, formType) {
+  populateTrackingFields(form, formType);
+  safeSessionSet('bf_lead_submission_pending', '1');
+  safeSessionSet('bf_lead_form_type', formType);
+
+  trackEvent('lead_form_submit', {
+    form_type: formType,
+    lead_source: safeSessionGet('bf_utm_source') || 'direkt',
+    campaign: safeSessionGet('bf_utm_campaign') || ''
+  });
+}
+
+captureCampaignData();
+
 // ─── QUIZ LOGIC ───
 const answers = {};
 function quizAnswer(q, val) {
   answers[q] = val;
+  trackEvent('quiz_answer', { question: q, answer: val });
   
   // Hide current question
   document.getElementById('q' + q).classList.remove('active');
@@ -927,6 +1033,10 @@ function updateDots(step) {
 function openModal(id) {
   document.getElementById(id).classList.add('active');
   document.body.style.overflow = 'hidden';
+
+  const formType = id === 'callback-modal' ? 'rueckruf' : 'kurzbewerbung';
+  populateTrackingFields(document.querySelector('#' + id + ' form'), formType);
+  trackEvent('lead_form_open', { form_type: formType });
 }
 
 function closeModal(id) {
@@ -940,6 +1050,43 @@ document.querySelectorAll('.modal-overlay').forEach(el => {
     if (e.target === el) closeModal(el.id);
   });
 });
+
+// ─── INTERAKTIONEN & FORMULARVERSAND ───
+const applyForm = document.getElementById('apply-form');
+const callbackForm = document.getElementById('callback-form');
+
+if (applyForm) {
+  applyForm.addEventListener('submit', function () {
+    prepareLeadSubmission(applyForm, 'kurzbewerbung');
+  });
+}
+
+if (callbackForm) {
+  callbackForm.addEventListener('submit', function () {
+    prepareLeadSubmission(callbackForm, 'rueckruf');
+  });
+}
+
+const whatsappButton = document.querySelector('.btn-whatsapp');
+if (whatsappButton) {
+  whatsappButton.addEventListener('click', function () {
+    trackEvent('contact_click', { contact_type: 'whatsapp' });
+  });
+}
+
+const emailButton = document.querySelector('.btn-email');
+if (emailButton) {
+  emailButton.addEventListener('click', function () {
+    trackEvent('contact_click', { contact_type: 'email' });
+  });
+}
+
+const phoneLink = document.querySelector('a[href^="tel:"]');
+if (phoneLink) {
+  phoneLink.addEventListener('click', function () {
+    trackEvent('contact_click', { contact_type: 'telefon' });
+  });
+}
 
 // ─── SHARE ───
 function sharePage() {
